@@ -1,6 +1,9 @@
 import {
+  Divider,
   Flex,
+  SimpleGrid,
   Spacer,
+  Tag,
   Text,
 } from "@chakra-ui/react"
 
@@ -20,8 +23,15 @@ const Tile = ({ row, col }: TileProps) => {
       <Text color="white" fontSize="lg" fontWeight="bold">
         Tile {row} : {col}
       </Text>
+      <Divider />
       <Spacer />
-      <Text color="green.500">Online</Text>
+      <SimpleGrid columns={6} spacing={1}>
+        {[...Array(10)].map((_, i) => (
+          <Tag size='lg' key={i} variant='solid' colorScheme='teal'>
+            {i}
+          </Tag>
+        ))}
+      </SimpleGrid>
     </Flex>
   )
 }

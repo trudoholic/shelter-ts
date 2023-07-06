@@ -20,7 +20,7 @@ function App() {
         <Container maxW="container.lg" centerContent>
           <Heading as="h1" size="xl">Shelter GAME</Heading>
           <VStack spacing={1}>
-            {[...Array(ROWS)].map((it, i) => (
+            {[...Array(ROWS)].map((_, i) => (
               <TileRow key={i} row={i} />
             ))}
           </VStack>
