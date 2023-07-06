@@ -7,7 +7,7 @@ interface TileRowProps {
   row: number
 }
 
-const COLS = 10
+const COLS = 4
 
 const TileRow = ({ row }: TileRowProps) => {
   return (

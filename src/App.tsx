@@ -11,7 +11,7 @@ import { TileRow } from "./components/TileRow"
 
 function App() {
   // const [count, setCount] = useState(0)
-  const ROWS = 20
+  const ROWS = 5
 
   return (
     <>

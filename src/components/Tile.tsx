@@ -1,5 +1,7 @@
 import {
-  Box,
+  Flex,
+  Spacer,
+  Text,
 } from "@chakra-ui/react"
 
 interface TileProps {
@@ -9,9 +11,18 @@ interface TileProps {
 
 const Tile = ({ row, col }: TileProps) => {
   return (
-    <Box bg='gray.600' w='100%' p={4} color='white'>
-      Box {row}:{col}
-    </Box>
+    <Flex
+      direction="column"
+      align="center"
+      bg="gray.600"
+      w="320px" h="240px" p={4}
+    >
+      <Text color="white" fontSize="lg" fontWeight="bold">
+        Tile {row} : {col}
+      </Text>
+      <Spacer />
+      <Text color="green.500">Online</Text>
+    </Flex>
   )
 }
 
