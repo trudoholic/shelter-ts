@@ -8,8 +8,12 @@ import {
 } from "@chakra-ui/react"
 import { ROWS } from "./utils/constants"
 import { TileRow } from "./components/TileRow"
+import useGame from "./hooks/useGame"
 
 function App() {
+
+  const { tiles } = useGame()
+  console.log(tiles)
 
   return (
     <>
