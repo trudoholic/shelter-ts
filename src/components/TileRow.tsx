@@ -1,13 +1,12 @@
 import {
   HStack,
 } from "@chakra-ui/react"
+import { COLS } from "../utils/constants"
 import { Tile } from "./Tile"
 
 interface TileRowProps {
   row: number
 }
-
-const COLS = 4
 
 const TileRow = ({ row }: TileRowProps) => {
   return (

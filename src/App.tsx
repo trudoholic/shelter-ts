@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import "./App.css"
 import {
   ChakraProvider,
@@ -7,11 +6,10 @@ import {
   Heading,
   VStack,
 } from "@chakra-ui/react"
+import { ROWS } from "./utils/constants"
 import { TileRow } from "./components/TileRow"
 
 function App() {
-  // const [count, setCount] = useState(0)
-  const ROWS = 5
 
   return (
     <>
