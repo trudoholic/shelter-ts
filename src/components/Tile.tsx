@@ -3,35 +3,55 @@ import {
   Flex,
   SimpleGrid,
   Spacer,
-  Tag,
   Text,
 } from "@chakra-ui/react"
+import { Droppable } from "@hello-pangea/dnd"
+import { Unit } from "./Unit"
+import { getId, getTiles, getUnits } from "../utils"
 
 interface TileProps {
   row: number
   col: number
 }
 
+const tiles = getTiles()
+const units = getUnits()
+
 const Tile = ({ row, col }: TileProps) => {
+  const id = getId(row, col)
+  const b = tiles[id]?.b
+  const unitsList = units.filter(it => it.parentId === id)
+
   return (
     <Flex
       direction="column"
       align="center"
-      bg="gray.600"
+      bg={b ? "blue.600" : "gray.600"}
       w="320px" h="240px" p={4}
     >
       <Text color="white" fontSize="lg" fontWeight="bold">
-        Tile {row} : {col}
+        Tile {id}
       </Text>
       <Divider />
       <Spacer />
-      <SimpleGrid columns={6} spacing={1}>
-        {[...Array(10)].map((_, i) => (
-          <Tag size='lg' key={i} variant='solid' colorScheme='teal'>
-            {i}
-          </Tag>
-        ))}
-      </SimpleGrid>
+
+      <Droppable droppableId={id} isDropDisabled={!b}>
+        {provided => {
+          return (
+            <div {...provided.droppableProps} ref={provided.innerRef? provided.innerRef: void 0}>
+
+              <SimpleGrid columns={6} spacing={1}>
+                {unitsList.map(({id}, i) => (
+                  <Unit key={id} id={id} index={i} />
+                ))}
+              </SimpleGrid>
+
+              {provided.placeholder}
+            </div>
+          )
+        }}
+      </Droppable>
+
     </Flex>
   )
 }

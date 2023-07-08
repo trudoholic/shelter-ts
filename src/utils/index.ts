@@ -1,4 +1,5 @@
-import { COLS, ROWS } from './constants'
+import { COLS, ROWS } from "./constants"
+import { DraggableLocation } from "@hello-pangea/dnd"
 
 export interface ITile {
   b: boolean
@@ -22,4 +23,45 @@ export const getTiles = (): ITiles => {
     }
   }
   return tiles
+}
+
+// method to handle the cards movement
+export const move = (state: ITiles, source: DraggableLocation, destination: DraggableLocation) => {
+  const srcListClone = [...state[source.droppableId]]
+  const destListClone =
+    source.droppableId === destination.droppableId
+      ? srcListClone
+      : [...state[destination.droppableId]]
+
+  const [movedElement] = srcListClone.splice(source.index, 1)
+  destListClone.splice(destination.index, 0, movedElement)
+
+  return {
+    [source.droppableId]: srcListClone,
+    ...(source.droppableId === destination.droppableId
+      ? {}
+      : {
+        [destination.droppableId]: destListClone,
+      }),
+  }
+}
+
+// - - -
+
+export interface IUnit {
+  id: string
+  parentId: string
+}
+
+export const getUnits = (): IUnit[] => {
+  const units: IUnit[] = []
+
+  let n = 20
+  while (n --> 0) {
+    const id = "#" + n.toString().padStart(2, "0")
+    units.push(
+      {id, parentId: getId(0, Math.floor(n / 10))}
+    )
+  }
+  return units
 }

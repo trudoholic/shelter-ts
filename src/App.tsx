@@ -6,26 +6,46 @@ import {
   Heading,
   VStack,
 } from "@chakra-ui/react"
+import { DragDropContext, DropResult } from "@hello-pangea/dnd"
 import { ROWS } from "./utils/constants"
 import { TileRow } from "./components/TileRow"
 import useGame from "./hooks/useGame"
+import { move } from "./utils"
 
 function App() {
 
   const { tiles } = useGame()
   console.log(tiles)
 
+  const onDragEnd = ({ source, destination }: DropResult) => {
+    if (!destination) {
+      return
+    }
+
+    this.setState(state => {
+      return move(state, source, destination)
+    })
+  }
+
   return (
     <>
       <ChakraProvider>
         <CSSReset />
         <Container maxW="container.lg" centerContent>
-          <Heading as="h1" size="xl">Shelter GAME</Heading>
-          <VStack spacing={1}>
-            {[...Array(ROWS)].map((_, i) => (
-              <TileRow key={i} row={i} />
-            ))}
-          </VStack>
+          <Heading as="h1" size="xl" pb={4}>
+            Shelter GAME
+          </Heading>
+
+          <DragDropContext onDragEnd={onDragEnd}>
+
+            <VStack spacing={1}>
+              {[...Array(ROWS)].map((_, i) => (
+                <TileRow key={i} row={i} />
+              ))}
+            </VStack>
+
+          </DragDropContext>
+
         </Container>
       </ChakraProvider>
     </>
