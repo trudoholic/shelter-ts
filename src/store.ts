@@ -3,7 +3,7 @@ import { tilesSlice } from "./features"
 
 const store = configureStore({
   reducer: {
-    cards: tilesSlice,
+    tiles: tilesSlice,
   },
 })
 
