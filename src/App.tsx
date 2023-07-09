@@ -6,10 +6,11 @@ import {
   Heading,
   VStack,
 } from "@chakra-ui/react"
-import { DragDropContext, DropResult } from "@hello-pangea/dnd"
-import { ROWS } from "./utils/constants"
-import { TileRow } from "./components/TileRow"
-import { move } from "./utils"
+import {DragDropContext, DropResult} from "@hello-pangea/dnd"
+import {ROWS} from "./utils/constants"
+import {TileRow} from "./components/TileRow"
+import {move} from "./utils"
+import {toGrid} from "./custom/tiles"
 import useTiles from "./hooks/useTiles"
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
   const {
     allTiles,
   } = useTiles()
-  console.log('###', allTiles)
+  const grid = toGrid(allTiles)
+  console.log('###', grid)
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) {

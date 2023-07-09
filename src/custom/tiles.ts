@@ -33,3 +33,12 @@ export const getTiles = (): ITile[] => {
   }
   return tiles
 }
+
+export const toGrid = (tiles: ITile[]): ITile[][] => {
+  const grid: ITile[][] = []
+  for (let row = 0; row < ROWS; ++row) {
+    const start = COLS * row
+    grid.push(tiles.slice(start, start + COLS))
+  }
+  return grid
+}
