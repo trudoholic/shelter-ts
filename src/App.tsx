@@ -9,7 +9,6 @@ import {
 import { DragDropContext, DropResult } from "@hello-pangea/dnd"
 import { ROWS } from "./utils/constants"
 import { TileRow } from "./components/TileRow"
-import useGame from "./hooks/useGame"
 import { move } from "./utils"
 import useTiles from "./hooks/useTiles"
 
@@ -19,9 +18,6 @@ function App() {
     allTiles,
   } = useTiles()
   console.log('###', allTiles)
-
-  const { tiles } = useGame()
-  console.log(tiles)
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) {

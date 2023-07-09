@@ -1,43 +1,30 @@
-import {useCallback} from "react"//React,//, useState//, useEffect
+import {useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux"
 import {getTiles} from '../custom/tiles';
 import {
   selectAll,
   addMany,
-  // addOne,
-  // removeOne,
+  removeAll,
   // updateOne,
 } from "../features/tilesSlice"
 
 const useTiles = () => {
-
-  const allTiles = useSelector(selectAll)
-  // console.log(cards)
-
   const dispatch = useDispatch()
 
-  const handleAddMany = useCallback(() => {
+  useEffect(() => {
     const tiles = getTiles()
-    if (tiles.length) {
-      dispatch(addMany(tiles))
+    dispatch(addMany(tiles))
+
+    return () => {
+      dispatch(removeAll())
     }
   }, [dispatch])
 
-  // useEffect(() => {
-  //   console.log('> allTiles:', allTiles.length)
-  //   const tiles = getTiles()
-  //   if (tiles.length) {
-  //     dispatch(addMany(tiles))
-  //   }
-  //   console.log('>> allTiles:', allTiles.length)
-  // }, [dispatch, allTiles.length])
+  const allTiles = useSelector(selectAll)
 
   return {
     allTiles,
-    handleAddMany,
-    // handleAddMany,
     // handleUpdate,
-    // handleRemove,
   }
 }
 

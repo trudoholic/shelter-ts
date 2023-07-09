@@ -19,6 +19,7 @@ export const slice = createSlice({
   reducers: {
     addMany: adapter.addMany,
     addOne: adapter.addOne,
+    removeAll: adapter.removeAll,
     removeOne: adapter.removeOne,
     updateOne: adapter.updateOne,
   },
@@ -26,9 +27,10 @@ export const slice = createSlice({
 
 export const {
   addMany,
-  addOne,
-  removeOne,
-  updateOne,
+  // addOne,
+  removeAll,
+  // removeOne,
+  // updateOne,
 } = slice.actions
 
 export default slice.reducer
