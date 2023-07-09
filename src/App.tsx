@@ -7,7 +7,6 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import {DragDropContext, DropResult} from "@hello-pangea/dnd"
-import {ROWS} from "./utils/constants"
 import {TileRow} from "./components/TileRow"
 import {move} from "./utils"
 import {toGrid} from "./custom/tiles"
@@ -19,7 +18,7 @@ function App() {
     allTiles,
   } = useTiles()
   const grid = toGrid(allTiles)
-  console.log('###', grid)
+  // console.log('###', grid)
 
   const onDragEnd = ({ source, destination }: DropResult) => {
     if (!destination) {
@@ -43,8 +42,8 @@ function App() {
           <DragDropContext onDragEnd={onDragEnd}>
 
             <VStack spacing={1}>
-              {[...Array(ROWS)].map((_, i) => (
-                <TileRow key={i} row={i} />
+              {grid.map((row, i) => (
+                <TileRow key={i} row={row} />
               ))}
             </VStack>
 

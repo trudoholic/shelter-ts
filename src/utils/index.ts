@@ -9,8 +9,13 @@ export interface ITiles {
   [key: string]: ITile
 }
 
+function pad(n: number) {
+  return n.toString().padStart(2, "0")
+}
+
 export const getId = (row: number, col: number) => {
-  return `t_${row}_${col}`
+  // return `t_${row}_${col}`
+  return `T_${pad(row)}_${pad(col)}`
 }
 
 export const getTiles = (): ITiles => {

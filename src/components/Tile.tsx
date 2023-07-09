@@ -6,36 +6,34 @@ import {
   Text,
 } from "@chakra-ui/react"
 import { Droppable } from "@hello-pangea/dnd"
+import {ITile} from "../custom/tiles"
 import { Unit } from "./Unit"
-import { getId, getTiles, getUnits } from "../utils"
+import { getUnits } from "../utils"
 
 interface TileProps {
-  row: number
-  col: number
+  tile: ITile
 }
 
-const tiles = getTiles()
 const units = getUnits()
 
-const Tile = ({ row, col }: TileProps) => {
-  const id = getId(row, col)
-  const b = tiles[id]?.b
+const Tile = ({tile}: TileProps) => {
+  const {id, flag} = tile
   const unitsList = units.filter(it => it.parentId === id)
 
   return (
     <Flex
       direction="column"
       align="center"
-      bg={b ? "blue.600" : "gray.600"}
+      bg={flag ? "blue.600" : "gray.600"}
       w="320px" h="240px" p={4}
     >
       <Text color="white" fontSize="lg" fontWeight="bold">
-        Tile {id}
+        {id}
       </Text>
       <Divider />
       <Spacer />
 
-      <Droppable droppableId={id} isDropDisabled={!b}>
+      <Droppable droppableId={id} isDropDisabled={!flag}>
         {provided => {
           return (
             <div {...provided.droppableProps} ref={provided.innerRef? provided.innerRef: void 0}>
