@@ -3,14 +3,22 @@ export interface IUnit {
   name: string
 }
 
+function pad(n: number) {
+  return n.toString().padStart(2, "0")
+}
+
+export const getUnit = (n: number): IUnit => {
+  return {
+    id: `U_${pad(n)}}`,
+    name: `U_${pad(n)}}`,
+  }
+}
+
 export const getUnits = (): IUnit[] => {
   const units: IUnit[] = []
-  // let row = ROWS
-  // while (row --> 0) {
-  //   let col = COLS
-  //   while (col --> 0) {
-  //     units.push(getUnit(row, col))
-  //   }
-  // }
+  let n = 20
+  while (n --> 0) {
+    units.push(getUnit(n))
+  }
   return units
 }

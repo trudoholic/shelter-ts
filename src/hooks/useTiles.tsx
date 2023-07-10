@@ -1,6 +1,7 @@
 import {useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux"
-import {getTiles} from '../custom/tiles';
+import useUnits from "./useUnits"
+import {getTiles} from "../custom/tiles"
 import {
   selectAll,
   addMany,
@@ -9,6 +10,12 @@ import {
 } from "../features/tilesSlice"
 
 const useTiles = () => {
+  const {
+    allUnits,
+  } = useUnits()
+  const units = allUnits.slice()
+  console.log('$$$', units)
+
   const dispatch = useDispatch()
 
   useEffect(() => {

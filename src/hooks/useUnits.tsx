@@ -1,6 +1,6 @@
 import {useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux"
-import {getUnits} from '../custom/units'
+import {getUnits} from "../custom/units"
 import {
   selectAll,
   addMany,
