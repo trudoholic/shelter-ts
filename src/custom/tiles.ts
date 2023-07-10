@@ -1,9 +1,12 @@
+import {IUnit} from "./units"
+
 export interface ITile {
   id: string
   name: string
   row: number
   col: number
   flag: boolean
+  units: IUnit[]
 }
 
 export const COLS = 4, ROWS = 5
@@ -19,6 +22,7 @@ export const getTile = (row: number, col: number): ITile => {
     row,
     col,
     flag: false,
+    units: [],
   }
 }
 

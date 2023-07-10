@@ -9,8 +9,8 @@ function pad(n: number) {
 
 export const getUnit = (n: number): IUnit => {
   return {
-    id: `U_${pad(n)}}`,
-    name: `U_${pad(n)}}`,
+    id: `U_${pad(n)}`,
+    name: `#${pad(n)}`,
   }
 }
 

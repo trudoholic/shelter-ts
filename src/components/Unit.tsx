@@ -5,10 +5,11 @@ import { Draggable } from "@hello-pangea/dnd"
 
 interface UnitProps {
   id: string
+  name: string
   index: number
 }
 
-const Unit = ({ id, index }: UnitProps) => {
+const Unit = ({ id, name, index }: UnitProps) => {
   return (
     <Draggable draggableId={id} index={index}>
       {provided => {
@@ -20,7 +21,7 @@ const Unit = ({ id, index }: UnitProps) => {
           >
 
             <Tag size='lg' variant='solid' colorScheme='teal'>
-              {id}
+              {name}
             </Tag>
 
           </div>

@@ -8,17 +8,13 @@ import {
 import { Droppable } from "@hello-pangea/dnd"
 import {ITile} from "../custom/tiles"
 import { Unit } from "./Unit"
-import { getUnits } from "../utils"
 
 interface TileProps {
   tile: ITile
 }
 
-const units = getUnits()
-
 const Tile = ({tile}: TileProps) => {
   const {id, flag} = tile
-  const unitsList = units.filter(it => it.parentId === id)
 
   return (
     <Flex
@@ -39,8 +35,8 @@ const Tile = ({tile}: TileProps) => {
             <div {...provided.droppableProps} ref={provided.innerRef? provided.innerRef: void 0}>
 
               <SimpleGrid columns={6} spacing={1}>
-                {unitsList.map(({id}, i) => (
-                  <Unit key={id} id={id} index={i} />
+                {tile.units.map(({id, name}, i) => (
+                  <Unit key={id} id={id} name={name} index={i} />
                 ))}
               </SimpleGrid>
 
