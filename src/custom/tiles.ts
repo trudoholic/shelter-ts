@@ -21,7 +21,7 @@ export const getTile = (row: number, col: number): ITile => {
     name: `T_${pad(row)}_${pad(col)}`,
     row,
     col,
-    flag: false,
+    flag: true,
     units: [],
   }
 }

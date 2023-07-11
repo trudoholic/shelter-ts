@@ -1,4 +1,4 @@
-import {useEffect} from "react"
+import {useCallback, useEffect} from "react"
 import {useSelector, useDispatch} from "react-redux"
 import useUnits from "./useUnits"
 import {getTiles} from "../custom/tiles"
@@ -6,7 +6,7 @@ import {
   selectAll,
   addMany,
   removeAll,
-  // updateOne,
+  updateOne,
 } from "../features/tilesSlice"
 
 const useTiles = () => {
@@ -31,9 +31,22 @@ const useTiles = () => {
 
   const allTiles = useSelector(selectAll)
 
+  const getUnitsById  = useCallback((id) => {
+    const tile = allTiles.find(it => it.id === id)
+    return tile ? tile.units : []
+  }, [allTiles])
+
+  const handleUpdate = useCallback((id, units) => {
+    const tile = allTiles.find(it => it.id === id)
+    if (tile) {
+      dispatch(updateOne({ id: tile.id, changes: {units: units} }))
+    }
+  }, [dispatch, allTiles])
+
   return {
     allTiles,
-    // handleUpdate,
+    getUnitsById,
+    handleUpdate,
   }
 }
 

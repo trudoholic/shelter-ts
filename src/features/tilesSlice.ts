@@ -30,7 +30,7 @@ export const {
   // addOne,
   removeAll,
   // removeOne,
-  // updateOne,
+  updateOne,
 } = slice.actions
 
 export default slice.reducer
