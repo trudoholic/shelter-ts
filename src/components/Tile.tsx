@@ -14,7 +14,7 @@ interface TileProps {
 }
 
 const Tile = ({tile}: TileProps) => {
-  const {id, flag} = tile
+  const {id, flag, units} = tile
 
   return (
     <Flex
@@ -35,7 +35,7 @@ const Tile = ({tile}: TileProps) => {
             <div {...provided.droppableProps} ref={provided.innerRef? provided.innerRef: void 0}>
 
               <SimpleGrid columns={6} spacing={1}>
-                {tile.units.map(({id, name}, i) => (
+                {units.map(({id, name}, i) => (
                   <Unit key={id} id={id} name={name} index={i} />
                 ))}
               </SimpleGrid>

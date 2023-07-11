@@ -8,8 +8,8 @@ import {
 } from "@chakra-ui/react"
 import {DragDropContext, DropResult} from "@hello-pangea/dnd"
 import {TileRow} from "./components/TileRow"
-import {move} from "./utils"
 import {toGrid} from "./custom/tiles"
+import {move} from "./custom/utils"
 import useTiles from "./hooks/useTiles"
 
 function App() {
