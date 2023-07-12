@@ -47,7 +47,7 @@ function App() {
     <>
       <ChakraProvider>
         <CSSReset />
-        <Container maxW="container.lg" centerContent>
+        <Container maxW="container.lg" centerContent userSelect="none">
           <Heading as="h1" size="xl" pb={4}>
             Shelter GAME
           </Heading>
