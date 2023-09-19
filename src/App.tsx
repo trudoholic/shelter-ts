@@ -27,7 +27,7 @@ function App() {
     }
 
     console.log('### SRC ###', source)
-    console.log('### DST ###', destination)
+    console.log('### +DST+ ###', destination)
 
     const srcId =  source.droppableId, dstId = destination.droppableId
 
