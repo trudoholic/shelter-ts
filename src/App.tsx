@@ -49,7 +49,7 @@ function App() {
         <CSSReset />
         <Container maxW="container.lg" centerContent userSelect="none">
           <Heading as="h1" size="xl" pb={4}>
-            Shelter GAME on Main
+            Shelter GAME on Foo
           </Heading>
 
           <DragDropContext onDragEnd={onDragEnd}>
